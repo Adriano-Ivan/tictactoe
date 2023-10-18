@@ -2,17 +2,22 @@ import { useState } from "react";
 
 const useBoardBehavior = () => {
     const [squares, setSquares] = useState(Array(9).fill(null));
+    const [isNext, setIsNext] = useState(false);
 
     const handleSquareClick = (clickedPosition) => {
-        setSquares((currentSquares) => {
-            return currentSquares.map((squareValue, pos) => {
-                if(clickedPosition === pos) {
-                    return 'X';
-                }
-
-                return squareValue;
+        if(!squares[clickedPosition]) {
+            setSquares((currentSquares) => {
+                return currentSquares.map((squareValue, pos) => {
+                    if(clickedPosition === pos) {
+                        return isNext ? "O" : 'X';
+                    }
+    
+                    return squareValue;
+                });
             });
-        });
+    
+            setIsNext((currentValue) => !currentValue);
+        }
     }
 
     return {
