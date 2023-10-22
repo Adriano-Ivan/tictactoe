@@ -1,8 +1,8 @@
 import Square from '../Square';
-import useBoardBehavior from './useBoardBehavior';
+import useBoardBehavior from '../../useBoardBehavior';
 
-const Board = () => {
-  const {squares, handleSquareClick} = useBoardBehavior();
+const Board = ({ handleSquareClick, squares}) => {
+  // const {squares, handleSquareClick} = useBoardBehavior();
 
   const renderSquare = (position) => {
     return <Square 
